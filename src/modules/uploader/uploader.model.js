@@ -56,10 +56,9 @@ export type Actions =
 
 // export type Action = {| +type: string |}
 
-export type State = {}
-export type GetState = () => State
+export type GetState = () => tState
 export type Store = { getState: GetState }
 export type ActionsObservable = Rx.Observable<Actions>
 export type Epic = (ActionsObservable, Store) => ActionsObservable
-export type Selector<T> = State => T
+export type Selector<T> = tState => T
 export type Reducer<S> = (S, Actions) => S

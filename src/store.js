@@ -19,8 +19,8 @@ export const DEFAULT_STATE = {
 const rootSagaMiddleware = createSagaMiddleware()
 const epicMiddleware = createEpicMiddleware(uploaderEpic)
 const enhancer = compose(
-  applyMiddleware(rootSagaMiddleware),
-  // applyMiddleware(epicMiddleware),
+  // applyMiddleware(rootSagaMiddleware),
+  applyMiddleware(epicMiddleware),
   typeof window !== 'undefined' && window.devToolsExtension
     ? window.devToolsExtension()
     : (x) => x
@@ -32,6 +32,6 @@ const store = createStore(
   enhancer
 )
 
-rootSagaMiddleware.run(uploaderSaga)
+// rootSagaMiddleware.run(uploaderSaga)
 
 export default store
