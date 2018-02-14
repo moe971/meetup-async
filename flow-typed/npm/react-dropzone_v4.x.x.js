@@ -1,5 +1,5 @@
-// flow-typed signature: db54e0fb617d876529ed4a11aecc3630
-// flow-typed version: 9e8f6b2f55/react-dropzone_v4.x.x/flow_>=v0.53.x
+// flow-typed signature: 8c363caa55dbf77d9ea18d964c715f0b
+// flow-typed version: 36aaaa262e/react-dropzone_v4.x.x/flow_>=v0.53.x
 
 declare module "react-dropzone" {
   declare type ChildrenProps = {
@@ -9,6 +9,10 @@ declare module "react-dropzone" {
     isDragActive: boolean,
     isDragAccept: boolean,
     isDragReject: boolean,
+  }
+
+  declare type DropzoneFile = File & {
+    preview?: string;
   }
 
   declare type DropzoneProps = {
@@ -34,9 +38,9 @@ declare module "react-dropzone" {
     rejectStyle?: Object,
     disabledStyle?: Object,
     onClick?: (event: SyntheticMouseEvent<>) => mixed,
-    onDrop?: (acceptedFiles: Array<File>, rejectedFiles: Array<File>, event: SyntheticDragEvent<>) => mixed,
-    onDropAccepted?: (acceptedFiles: Array<File>, event: SyntheticDragEvent<>) => mixed,
-    onDropRejected?: (rejectedFiles: Array<File>, event: SyntheticDragEvent<>) => mixed,
+    onDrop?: (acceptedFiles: Array<DropzoneFile>, rejectedFiles: Array<DropzoneFile>, event: SyntheticDragEvent<>) => mixed,
+    onDropAccepted?: (acceptedFiles: Array<DropzoneFile>, event: SyntheticDragEvent<>) => mixed,
+    onDropRejected?: (rejectedFiles: Array<DropzoneFile>, event: SyntheticDragEvent<>) => mixed,
     onDragStart?: (event: SyntheticDragEvent<>) => mixed,
     onDragEnter?: (event: SyntheticDragEvent<>) => mixed,
     onDragOver?: (event: SyntheticDragEvent<>) => mixed,
@@ -44,5 +48,9 @@ declare module "react-dropzone" {
     onFileDialogCancel?: () => mixed,
   };
 
-  declare module.exports: React$ComponentType<DropzoneProps>;
+  declare class Dropzone extends React$Component<DropzoneProps> {
+    open(): void;
+  }
+
+  declare module.exports: typeof Dropzone;
 }

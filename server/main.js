@@ -21,11 +21,12 @@ app.post('/upload', function(req, res) {
 
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
   let sampleFile = req.files.sampleFile
-  console.log(req.files.sampleFile.name)
   // Use the mv() method to place the file somewhere on your server
-  sampleFile.mv(`./bin/uploaded/${req.files.sampleFile.name}`, function(err) {
+  sampleFile.mv(`./bin/uploaded/${sampleFile.name}`, function(err) {
     if (err) return res.status(500).send(err)
-    res.send('File uploaded!')
+    res.json({
+      name: sampleFile.name
+    })
   })
 })
 

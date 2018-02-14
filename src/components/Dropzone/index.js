@@ -77,11 +77,11 @@ class MSDropzone extends Component<Props> {
     e: Object
   ) => {
     const { dispatch } = this.props
+    dispatch({ type: 'DROPZONE_DROP' })
     dispatch({
       type: 'UPLOAD_REQUESTED',
       files: acceptedFiles
     })
-    dispatch({ type: 'DROPZONE_DROP' })
   }
 
   handleDragEnter = () => {
