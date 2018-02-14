@@ -1,0 +1,37 @@
+.dropzoneDefault {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  height: 200px;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.dropzoneDefault > * {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  background-color: #fdfdfd;
+  border: 1px dashed #B8B8B8;
+  color: #B8B8B8;
+  transition:
+    color ease-in-out 0.15s,
+    background-color ease-in-out 0.15s,
+    border-color ease-in-out 0.15s;
+}
+
+.dropzoneActive > * {
+  background-color: #defae4;
+  border-color: #21ba45;
+  color: #21ba45;
+}
+
+.dropzoneReject > * {
+  background-color: #fef8e0;
+  border-color: #f6cb1f;
+  color: #f6cb1f;
+}
