@@ -1,0 +1,19 @@
+{
+  "name": "meetup-async",
+  "version": "1.0.0",
+  "description": "demo app for redux saga",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moe971/meetup-async.git"
+  },
+  "author": "Moe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moe971/meetup-async/issues"
+  },
+  "homepage": "https://github.com/moe971/meetup-async#readme"
+}
