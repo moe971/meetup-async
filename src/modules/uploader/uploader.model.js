@@ -1,4 +1,6 @@
 // @flow
+import Rx from 'rxjs/Rx';
+
 export type tUploadRequested = {
   type: 'UPLOAD_REQUESTED',
   files: Array<File>,
@@ -30,3 +32,12 @@ export type tJobUploadStarted = {
   path: string,
   totalItems: number
 }
+
+export type Action = {| +type: string |}
+export type State = {}
+export type GetState = () => State
+export type Store = { getState: GetState }
+export type ActionsObservable = Rx.Observable<Action>
+export type Epic = (ActionsObservable, Store) => ActionsObservable
+export type Selector<T> = State => T
+export type Reducer<S> = (S, Action) => S
