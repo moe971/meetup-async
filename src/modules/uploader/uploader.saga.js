@@ -15,13 +15,13 @@ import type { tUploadRequested, tState } from './uploader.model'
 const mediabuffer = []
 
 function* checkUploadJobSaga(action): Generator<*, *, *> {
-  if (mediabuffer.length > 0) {
-    yield fork(uploadMediaSaga, mediabuffer.shift())
-  } else {
-    yield put({
-      type: 'JOB_UPLOAD_COMPLETE'
-    })
-  }
+  if (mediabuffer.length > 0) yield fork(uploadMediaSaga, mediabuffer.shift())
+  const uploadConcurrency = yield select(
+    ({ uploadConcurrency }): tState => uploadConcurrency
+  )
+  if (uploadConcurrency === 0) yield put({
+    type: 'JOB_UPLOAD_COMPLETE'
+  })
 }
 
 function* uploadMediaSaga(file): Generator<*, *, *> {

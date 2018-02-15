@@ -5,8 +5,8 @@ import { createEpicMiddleware } from 'redux-observable'
 
 
 import uploader from './modules/uploader/uploader.reducer'
-import uploaderSaga from './modules/uploader/uploader.saga'
-import {uploaderEpic} from "./modules/uploader/uploader.epic";
+import rootUploaderSaga from './modules/uploader/uploader.saga'
+import { rootUploaderEpic } from "./modules/uploader/uploader.epic";
 
 export const DEFAULT_STATE = {
   uploadConcurrency: 0,
@@ -17,9 +17,9 @@ export const DEFAULT_STATE = {
 }
 
 const rootSagaMiddleware = createSagaMiddleware()
-const epicMiddleware = createEpicMiddleware(uploaderEpic)
+const epicMiddleware = createEpicMiddleware(rootUploaderEpic)
 const enhancer = compose(
-  // applyMiddleware(rootSagaMiddleware),
+//  applyMiddleware(rootSagaMiddleware),
   applyMiddleware(epicMiddleware),
   typeof window !== 'undefined' && window.devToolsExtension
     ? window.devToolsExtension()
@@ -32,6 +32,6 @@ const store = createStore(
   enhancer
 )
 
-// rootSagaMiddleware.run(uploaderSaga)
+ //rootSagaMiddleware.run(rootUploaderSaga)
 
 export default store
